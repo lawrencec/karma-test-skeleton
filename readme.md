@@ -1,8 +1,8 @@
-# Cross browser test skeleton
+# Cross browser test skeleton [![build status](https://secure.travis-ci.org/lawrencec/karma-test-skeleton.png)](http://travis-ci.org/lawrencec/karma-test-skeleton)
 
 A skeleton stub project reminding me how to setup and run frontend js tests, with html fixtures, in multiple browsers concurrently using [Karma](http://karma-runner.github.io). 
 
-Karma is command line tool that will run your tests in any browser/device automatically.
+Karma is a command line tool that will automatically run your tests in any browser/device and generate reports.
 
 Out of the box configuration is supplied for Firefox, Chrome, PhantomJS and (via virtualbox virtual machines) IE9, IE10 and IE11. Native IE will probably work too as long as the correct browser name is used in the config; 'IE" instead of "IE9 - Win7" for example.
 

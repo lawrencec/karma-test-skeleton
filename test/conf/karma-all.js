@@ -1,7 +1,7 @@
 var allConfig = require('./karma-common.js');
 
 module.exports = function (config) {
-    allConfig.browsers = allConfig.getBrowsers() || [
+    allConfig.browsers = [
         'Firefox',
         'Chrome',
         'IE9 - Win7',

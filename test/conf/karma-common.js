@@ -124,9 +124,5 @@ module.exports = {
       'karma-junit-reporter',
       'karma-htmlfile-reporter',
       'karma-ievms'
-    ],
-
-    getBrowsers: function() {
-      return (process.env.KARMA_BROWSERS) ? process.env.KARMA_BROWSERS.split(',') : null;
-    }
+    ]
 };

@@ -1,13 +1,14 @@
 var allConfig = require('./karma-common.js');
 
 module.exports = function (config) {
-    allConfig.browsers = [
+    allConfig.browsers = allConfig.getBrowsers() || [
         'Firefox',
         'Chrome',
-        'IE8 - WinXP',
         'IE9 - Win7',
-        'IE10 - Win7'
+        'IE10 - Win7',
+        'IE11 - Win7',
+        'IOS'
     ];
-    allConfig.logLevel = config.LOG_DEBUG;
+    allConfig.logLevel = config.LOG_INFO;
     config.set(allConfig);
 };

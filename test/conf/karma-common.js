@@ -1,14 +1,17 @@
-var testType =  process.env.KARMA_TEST_TYPE || '**';
 module.exports = {
     // base path, that will be used to resolve files and exclude
     basePath: '../../',
 
     frameworks: [
       'mocha',
-      'chai',
-      'sinon',
       'chai-sinon'
     ],
+
+    client: {
+      mocha: {
+        ui: 'tdd'
+      }
+    },
 
     // list of files / patterns to load in the browser
     files: [
@@ -18,34 +21,50 @@ module.exports = {
       // test dependencies
       'test/lib/fixture-helper.js',
       //tests
-      { pattern: 'test/'+testType+'/*Spec.js', served: true, included: true, watched: true},
+      {
+        pattern: [
+          'test',
+          process.env.KARMA_TEST_TYPE || '**',
+          '*Spec.js'].join('/'),
+        served: true,
+        included: true,
+        watched: true
+      },
       // fixtures
-      { pattern: 'test/fixtures/**/*.html', included: true }
+      {
+        pattern: 'test/fixtures/**/*.html',
+        included: true
+      }
     ],
 
     // list of files to exclude
     exclude: [],
 
     preprocessors: {
-      'lib/*.js': 'coverage',
+      'lib/*.js': [
+        'coverage'
+      ],
       'test/fixtures/**/*.html': ['html2js']
     },
 
     // use dots reporter, as travis terminal does not support escaping sequences
     // possible values: 'dots', 'progress', 'junit'
     // CLI --reporters progress
-    reporters: ['spec', 'coverage'],
+    reporters: [
+      'dots',
+      'html',
+      'coverage'
+    ],
 
     coverageReporter: {
         type: 'html',
         dir: 'target/test-reports/coverage/'
     },
 
-    client: {
-      mocha: {
-        ui: 'tdd'
-      }
+    htmlReporter: {
+      outputFile: 'target/test-reports/html/test-report.html'
     },
+
     // web server port
     // CLI --port 9876
     port: 9876,
@@ -93,20 +112,21 @@ module.exports = {
     // CLI --report-slower-than 500
     reportSlowerThan: 500,
 
-//    proxies: {
-//        '/fixtures/': 'http://localhost:8000/'
-//    }
+//    proxies: {}
 
     plugins: [
       'karma-mocha',
-      'karma-sinon',
-      'karma-chai',
       'karma-chai-sinon',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
+      'karma-html2js-preprocessor',
       'karma-coverage',
-      'karma-spec-reporter',
       'karma-junit-reporter',
-      'karma-html2js-preprocessor'
-    ]
+      'karma-htmlfile-reporter',
+      'karma-ievms'
+    ],
+
+    getBrowsers: function() {
+      return (process.env.KARMA_BROWSERS) ? process.env.KARMA_BROWSERS.split(',') : null;
+    }
 };

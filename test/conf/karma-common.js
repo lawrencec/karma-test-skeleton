@@ -119,6 +119,7 @@ module.exports = {
       'karma-chai-sinon',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
       'karma-html2js-preprocessor',
       'karma-coverage',
       'karma-junit-reporter',

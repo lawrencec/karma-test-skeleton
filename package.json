@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "karma start test/conf/karma-dev.js",
+    "test": "karma start test/conf/karma-dev.js --single-run --browsers PhantomJS",
+    "test-dev": "karma start test/conf/karma-dev.js",
     "test-all": "karma start test/conf/karma-all.js",
     "test-ci": "karma start test/conf/karma-ci.js",
     "test-debug": "karma start test/conf/karma-debug.js"

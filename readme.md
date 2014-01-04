@@ -1,6 +1,6 @@
 # Cross browser test skeleton
 
-A skeleton stub project reminding me how to setup and run frontend js tests, with html fixtures, in multiple browsers concurrently using [Karma](karma-runner.github.io). 
+A skeleton stub project reminding me how to setup and run frontend js tests, with html fixtures, in multiple browsers concurrently using [Karma](http://karma-runner.github.io). 
 
 Karma is command line tool that will run your tests in any browser/device automatically.
 
@@ -87,7 +87,7 @@ IE11 - Win7                     POWEROFF              ova missing           arch
 
 ## Run
 
-There a few commands set up to run the tests, depending on the scenario required. These can be found in the scripts section of the <code>package.json</code> file. Each command uses a different config file to configure itself. Each config shares a common config and only overrides what it needs. All provide html reports and code coverage reports in the /target folder. 
+There a few commands set up to run the tests, depending on the scenario required. These can be found in the scripts section of the <code>[package.json](https://github.com/lawrencec/karma-test-skeleton/blob/master/package.json)</code> file. Each command uses a different config file to configure itself. Each config shares a common config and only overrides what it needs. All provide html reports and code coverage reports in the /target folder. 
 
 ``` bash
 # phantomjs only - useful for quick test runs and travis-ci
@@ -126,7 +126,7 @@ By default the above commands will run both integration and unit tests. The unit
 # unit tests only
 $ KARMA_TEST_TYPE=unit npm run test-dev
 # integration tests only
-$ KARMA_TEST_TYPE=unit npm run test-dev
+$ KARMA_TEST_TYPE=integration npm run test-dev
 ```
 
 ### Debugging

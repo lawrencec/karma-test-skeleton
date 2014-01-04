@@ -1,3 +1,5 @@
+var configHelper = require('./karma-config-helper.js');
+
 module.exports = {
     // base path, that will be used to resolve files and exclude
     basePath: '../../',
@@ -24,8 +26,9 @@ module.exports = {
       {
         pattern: [
           'test',
-          process.env.KARMA_TEST_TYPE || '**',
-          '*Spec.js'].join('/'),
+          configHelper.getEnvVar('KARMA_TEST_TYPE') || '**',
+          '*Spec.js'
+        ].join('/'),
         served: true,
         included: true,
         watched: true
@@ -117,6 +120,7 @@ module.exports = {
     plugins: [
       'karma-mocha',
       'karma-chai-sinon',
+      'karma-ie-launcher',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-phantomjs-launcher',
@@ -125,9 +129,5 @@ module.exports = {
       'karma-junit-reporter',
       'karma-htmlfile-reporter',
       'karma-ievms'
-    ],
-
-    getBrowsers: function() {
-      return (process.env.KARMA_BROWSERS) ? process.env.KARMA_BROWSERS.split(',') : null;
-    }
+    ]
 };

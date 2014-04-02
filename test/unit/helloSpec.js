@@ -11,7 +11,7 @@ describe('Hello', function () {
             },
             mock = sinon.mock(el);
 
-        mock.expects('addEventListener').once().callsArgWith(1, 'click').callsArgWith(3, 'false');
+        mock.expects('addEventListener').once().withArgs('click', sinon.match.func, false);
 
         testObj.register(el);
         mock.verify();
@@ -24,7 +24,7 @@ describe('Hello', function () {
             },
             mock = sinon.mock(el);
 
-        mock.expects('attachEvent').once().withArgs('onclick');
+        mock.expects('attachEvent').once().withArgs('onclick', sinon.match.func);
 
         testObj.register(el);
         mock.verify();
